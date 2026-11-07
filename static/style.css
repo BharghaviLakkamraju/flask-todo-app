@@ -1,0 +1,144 @@
+body{
+    background-color: white;
+    width: 100%;
+    margin: 2;
+}
+.split-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+.split-left {
+    background-color: #F891BB;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: small;
+    text-align: center;
+
+}
+
+.split-middle{
+    display: flex;
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: small;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.split-right{
+
+    background-color: #F891BB;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: small;
+    padding: 15px;
+    text-align: center;
+}
+button{
+    background-color: #B26CFF;
+    font-size: larger;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    align-items: center;
+    width: 150px;
+    margin-top: 2cm;
+    height: 5ch;
+    border-radius: 5px;
+
+}
+.thrid{
+    justify-content: end;
+    margin-top: auto;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 15px;
+    row-gap: 15px;
+    margin-top: 10px;
+
+}
+.task-box{
+    background-color: #F891BB;
+    width: 150px;
+    
+}
+.calendar{
+    background-color: aliceblue;
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+
+}
+.calendar-header{
+    margin-top: 50px;
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items:first baseline;
+    
+}
+
+.calendar-header button {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+
+}
+.weeks{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+.weeks p {
+    color: blue;
+}
+.days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+.days .selected {
+    background-color: #f3a6c8;
+    border-radius: 50%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 8px;
+}
+
+@media (max-width: 600px) {
+    .split-container {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .task-box {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        background-color: aqua;
+    }
+
+    .task-box h3 {
+        margin: 0;
+    }
+
+    .task-box form button {
+        width: auto;
+        height: auto;
+        margin-top: 0;
+    }
+}

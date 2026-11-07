@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <title>Checklist</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="split-container">
+            <div class="split-left">
+                <form action="/calculate" method="post">
+                    <input type="hidden" name="date" value="today">
+                    <button type="submit">📆 Today</button>
+                </form>
+                <form action="/calculate" method="post">
+                    <input type="hidden" name="date" value="tomorrow">
+                    <button type="submit">🗓 Upcoming</button>
+                </form>
+
+            </div>
+            <div class="split-middle">
+                <h1>My Tasks - Today</h1>
+                <dialog id="openform">
+                    <form action="/add_task" method="post">
+                        <label>Task Name</label>
+                        <input type="text" name="task_name">
+                        <label>Due Date</label>
+                        <input type="date" name="due_date">
+                        <button type="submit">OK</button>
+                    </form>
+                </dialog>
+                <button type="button" onclick="document.getElementById('openform').showModal()">
+                    Add Task 
+                </button>
+                
+            <div class="container">
+                {% for task in today_tasks %}
+                    <div class="task-box">
+                        <input type="checkbox">
+
+                        <h3>{{ task['task_name'] }}</h3>
+
+                        <form action="/close_task" method="post">
+                            <input type="hidden" name="task_id" value="{{ task['id'] }}">
+                            <input type="hidden" name="due_date" value="{{ tasks_date }}">
+
+                            <button type="submit">✗</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+            </div>
+            <div class="split-right">
+                <h1>Calendar</h1>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div><button id="prev-month"><</button></div>
+                        <div><h3 id="month-year">December 2026</h3></div>
+                        <div><button id="next-month">></button></div>
+                    </div>
+                    <div class="weeks">
+                            <p>Mon</p>
+                            <p>Tue</p>
+                            <p>Wed</p>
+                            <p>Thur</p>
+                            <p>Fri</p>
+                            <p>Sat</p>
+                            <p>Sun</p>
+                    </div>
+                    <div class="days">
+
+                    </div>
+                    <form action="/calculate" method="POST" id="calendar-form">
+                        <input type="hidden" name="date" id="date">
+                    </form>
+
+                </div>
+                
+                <h2></h2>
+
+            </div>
+
+        </div>
+        <script>
+            let selectedDate = "{{ tasks_date or '' }}";
+        </script>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
